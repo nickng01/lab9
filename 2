@@ -1,0 +1,65 @@
+from gfxhat import touch, lcd, backlight, fonts
+f1 =  [
+[1,1,1,1,1,1,1,1],
+[1,1,1,1,1,1,1,1],
+[0,1,1,1,1,1,1,0],
+[1,0,1,1,1,1,0,1],
+[1,0,0,1,1,0,0,1],
+[1,0,0,1,1,0,0,1],
+[0,0,0,1,1,0,0,0],
+[0,0,0,0,0,0,0,0]
+]
+pm = [[0,0,0,1,1,1,1,1,0,0,0],
+[0,0,1,1,1,1,1,1,1,0,0],
+[0,1,1,1,1,1,1,1,1,1,0],
+[1,1,1,1,1,1,1,1,0,0,0],
+[1,1,1,1,1,1,1,0,0,0,0],
+[1,1,1,1,1,1,0,0,0,0,0],
+[1,1,1,1,1,1,0,0,0,0,0],
+[1,1,1,1,1,1,1,0,0,0,0],
+[1,1,1,1,1,1,1,1,0,0,0],
+[0,1,1,1,1,1,1,1,1,1,0],
+[0,0,1,1,1,1,1,1,1,0,0],
+[0,0,0,1,1,1,1,1,0,0,0]
+]
+def dpObj(obj, x, y):
+    lcd.clear()
+    xp = x
+    for y1 in obj:
+        for x2 in y1:
+            lenY = len(obj)
+            lenX = len(y1)
+            if x2 == 1:
+                pixel = 1
+            else:
+                pixel = 0
+            lcd.set_pixel(xp,y,pixel) 
+            xp = xp + 1
+        y = y + 1 
+        lcd.set_pixel(xp, y , pixel)
+        xp = x
+    lcd.show()
+
+
+lcd.clear()
+lcd.show()
+obj = int(input("Select 1 or 2:"))
+if obj == 1: 
+    obj = f1
+elif obj == 2:
+    obj = pm
+else:
+    print('Error')
+    obj = int(input("Select 1 or 2:"))
+for y1 in obj:
+    for x1 in y1:
+        lenY = len(obj)
+        lenX = len(y1)
+XPoint = int(input("value of X: "))
+YPoint = int(input("value of Y: "))
+dpObj(obj,XPoint, YPoint)
+
+   
+          
+
+
